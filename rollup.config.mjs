@@ -1,11 +1,24 @@
+import { terser } from "rollup-plugin-terser";
 import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import json from '@rollup/plugin-json';
+import svelte from 'rollup-plugin-svelte';
+import autoPreprocess from 'svelte-preprocess';
+
+const production = !process.env.ROLLUP_WATCH;
 
 const plugins = [
   babel(),
   commonjs(),
-  json()
+  json(),
+  svelte({
+    compilerOptions: {
+      dev: !production
+    },
+    emitCss: false,
+    preprocess: autoPreprocess()
+  }),
+  production && terser()
 ];
 
 export default [
@@ -19,9 +32,7 @@ export default [
     },
     external: [
       'atom',
-      'electron',
-      'event-kit',
-      'atom-space-pen-views'
+      'electron'
     ],
     plugins: plugins
   },

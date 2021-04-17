@@ -1,81 +1,91 @@
-# Atom Console package
+# console
 
-**This isn't a terminal**. It's only a log console. Great for showing compilation output, long responses or general logs.
+> Service provider for read-only console panels
 
-![Screenshot](https://github.com/spark/console-panel/raw/master/resources/screenshot.png)
+[![apm](https://flat.badgen.net/apm/license/console)](https://atom.io/packages/console)
+[![apm](https://flat.badgen.net/apm/v/console)](https://atom.io/packages/console)
+[![apm](https://flat.badgen.net/apm/dl/console)](https://atom.io/packages/console)
+[![David](https://flat.badgen.net/david/dep/idleberg/atom-console)](https://david-dm.org/idleberg/atom-console)
+
+This package is a fork of `console-panel`, with a few key-differences:
+
+- uses Svelte for UI
+- deferred package activation
+- shows timestamp
+- filter by message type
+
+**Note:** This package is fully API-compatible to `console-panel`, so you can use it as a drop-in replacement
+
+## Installation
+
+### apm
+
+Install `console` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:
+
+`$ apm install console`
+
+### Using Git
+
+Change to your Atom packages directory:
+
+**Windows**
+
+```powershell
+# Powershell
+$ cd $Env:USERPROFILE\.atom\packages
+```
+
+```cmd
+:: Command Prompt
+$ cd %USERPROFILE%\.atom\packages
+```
+
+**Linux & macOS**
+
+```bash
+$ cd ~/.atom/packages/
+```
+
+Clone repository as `console`:
+
+```bash
+$ git clone https://github.com/idleberg/atom-console console
+```
+
+Inside the cloned directory, install dependencies using your preferred Node package manager:
+
+```bash
+$ yarn || npm install
+```
 
 ## Usage
 
-By itself, the package doesn't do anything but it provides a service other packages can consume:
-
-`package.json`
+This package provides the service to that can be used by other packages. To consume it, add the following to your `package.json`:
 
 ```json
-"consumedServices": {
-  "console-panel": {
-    "versions": {
-      "^1.0.0": "consumeConsolePanel"
+{
+  "consumedServices": {
+    "console-panel": {
+      "versions": {
+        "1.0.0": "consumeConsole"
+      }
     }
   }
 }
 ```
 
-`main.coffee`
+Next up, you can consume the service in your package:
 
-```coffeescript
-consumeConsolePanel: (@consolePanel) ->
+```js
+consumeConsole(consolePanel) {
+  this.consolePanel = consolePanel;
 
-log: (message) ->
-	@consolePanel.log(message)
+  return new Disposable(() => {
+    this.consolePanel = null;
+  });
+}
 ```
 
-## API reference
+## License
 
-When consuming console panel you'll get an instance of `ConsoleManager` which has the following methods:
-
-###### toggle()
-
-Toggles the console panel.
-
-###### log(message, level='info')
-
-Logs a message. `message` can be a `String` or a custom `View` that will be appended.
-
-###### error(message)
-
-Logs an error.
-
-###### warn(message)
-
-Logs a warning.
-
-###### notice(message)
-
-Logs a notice.
-
-###### debug(message)
-
-Logs an debug message.
-
-###### raw(rawText, level='info', lineEnding="\n")
-
-Logs a raw message. `rawText` will be split by `lineEnding` and each line will be added separately as `level`.
-
-###### clear()
-
-Clears the whole console.
-
-###### stickBottom()
-
-Stick to the bottom of the console panel (default).
-
-###### stickTop()
-
-Stick to the top of the console panel.
-
-## TODO
-
-- Write specs
-- Add level filtering
-- Show timestamp
-- "Go to latest" button
+This work is licensed under [The MIT License](https://opensource.org/licenses/MIT)

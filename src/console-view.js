@@ -1,23 +1,23 @@
-import { $$, View } from 'atom-space-pen-views';
+import store from './store';
+import { getConfig, getTimestamp, hideDock, showDock } from './utils';
+import Console from './views/console.svelte';
 
-export default class ConsoleView extends View {
-  static content() {
-    this.div({ id: 'atom-console' }, () => {
-      this.div({ class: 'panel-body view-scroller', outlet: 'body' }, () => {
-        this.pre({
-          class: 'native-key-bindings',
-          outlet: 'output',
-          tabindex: -1,
-        });
-      });
-    });
-  }
+export default class ConsoleView {
 
-  // Tear down any state and detach
   destroy() {
     if (this.disposables !== null) {
       this.disposables.dispose();
     }
+  }
+
+  getElement() {
+    const element = document.createElement('console');
+
+    new Console({
+      target: element
+    });
+
+    return element;
   }
 
   getTitle() {
@@ -25,24 +25,24 @@ export default class ConsoleView extends View {
   }
 
   getPath() {
-    return 'console';
+    return 'panel';
   }
 
-  getUri() {
-    return `particle-dev://editor/${this.getPath()}`;
+  getURI() {
+    return `atom://console/${this.getPath()}`;
   }
 
   getDefaultLocation() {
-    return 'bottom';
+    return getConfig('panelLocation');
   }
 
   show() {
     atom.workspace.open(this, { activatePane: false });
-    atom.workspace.getBottomDock().show();
+    showDock();
   }
 
   hide() {
-    atom.workspace.getBottomDock().hide();
+    hideDock();
   }
 
   toggle() {
@@ -50,20 +50,9 @@ export default class ConsoleView extends View {
   }
 
   log(message, level) {
-    const at_bottom =
-      this.body.scrollTop() + this.body.innerHeight() + 10 >
-      this.body[0].scrollHeight;
+    console.log({level, message});
 
-    if (typeof message === 'string') {
-      this.output.append(
-        $$(function () {
-          this.p({ class: `level-${level}` }, message);
-        })
-      );
-    } else {
-      this.output.append(message);
-    }
-
+<<<<<<< Updated upstream
     if (at_bottom && !this.stickTop) {
       this.body.scrollTop(this.body[0].scrollHeight);
     } else if (this.stickTop) {
@@ -73,10 +62,32 @@ export default class ConsoleView extends View {
     if (atom.config.get('console-panel.show') === true) {
       this.show();
     }
+=======
+    store.update(state => {
+      state.lines = [
+        ...state.lines || [],
+        {
+          level,
+          message,
+          timestamp: getTimestamp(),
+        }
+      ];
+
+      state.action = 'log';
+
+      return state;
+    });
+>>>>>>> Stashed changes
   }
 
   clear() {
-    this.output.empty();
-    this.hide();
+    console.log('Clearing console');
+
+    store.update(state => {
+      state.action = 'clear';
+      state.lines = [];
+
+      return state;
+    });
   }
 }

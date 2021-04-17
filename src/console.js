@@ -1,11 +1,10 @@
 import { CompositeDisposable } from 'atom';
 import ConsoleManager from './console-manager';
 import ConsoleView from './console-view';
-import packageConfig from './config/config-schema.json';
+import configSchema from './config';
 
 export default {
-  config: packageConfig,
-
+  config: configSchema,
   consoleView: null,
   subscriptions: null,
 
@@ -19,29 +18,43 @@ export default {
     // Register command that toggles this view
     this.subscriptions.add(
       atom.commands.add('atom-workspace', {
-        'console:toggle': () => this.consoleManager.toggle(),
+        'console:show': () => this.consoleManager.show()
       })
     );
+
+    this.subscriptions.add(
+      atom.commands.add('atom-workspace', {
+        'console:hide': () => this.consoleManager.hide()
+      })
+    );
+
+    this.subscriptions.add(
+      atom.commands.add('atom-workspace', {
+        'console:toggle': () => this.consoleManager.toggle()
+      })
+    );
+
+    this.subscriptions.add(
+      atom.commands.add('atom-workspace', {
+        'console:clear': () => this.consoleManager.clear()
+      })
+    );
+
+    window.cp = this.consoleManager;
+    if (atom.inDevMode()) {
+      atom.commands.add('atom-workspace', {
+        'console:log': () => this.consoleManager.raw({ msg: 'Hello World'})
+      });
+    }
   },
 
   deactivate() {
+    console.log('Deactivating');
     this.subscriptions.dispose();
     this.consoleView.destroy();
   },
 
   provideConsolePanel() {
     return this.consoleManager;
-  },
-
-  consumeToolBar(toolBar) {
-    this.toolBar = toolBar('console-tool-bar');
-
-    this.toolBar.addButton({
-      icon: 'align-left',
-      iconset: 'fi',
-      tooltip: 'Toggle Console',
-      callback: 'console:toggle',
-      priority: 600,
-    });
-  },
+  }
 };

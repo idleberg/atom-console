@@ -11,6 +11,14 @@ export default class ConsoleManager {
   }
 
   // Toggle console panel
+  hide() {
+    this.view.hide();
+  }
+
+  show() {
+    this.view.show();
+  }
+
   toggle() {
     this.view.toggle();
   }
@@ -24,7 +32,7 @@ export default class ConsoleManager {
   }
 
   // Log message with default level
-  log(message, level = 'info') {
+  log(message, level = 'log') {
     this.view.log(message, level);
   }
 
@@ -35,12 +43,12 @@ export default class ConsoleManager {
 
   // Log warning
   warn(message) {
-    this.log(message, 'warn');
+    this.log(message, 'warning');
   }
 
   // Log notice
-  notice(message) {
-    this.log(message, 'notice');
+  info(message) {
+    this.log(message, 'info');
   }
 
   // Log debug message
@@ -49,16 +57,11 @@ export default class ConsoleManager {
   }
 
   // Log raw text
-  raw(rawText, level, lineEnding) {
-    if (level === null) {
-      level = 'info';
-    }
-    if (lineEnding === null) {
-      lineEnding = '\n';
-    }
-    rawText.split(lineEnding).forEach((line) => {
-      this.log(line, level);
-    });
+  raw(rawText, level = 'raw', lineEnding = '\n') {
+    console.log('Raw output', rawText);
+    // rawText.split(lineEnding).map(line => {
+      this.log(String(true), level);
+    // });
   }
 
   // Clear console panel
