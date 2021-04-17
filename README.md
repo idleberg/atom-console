@@ -5,6 +5,7 @@
 [![apm](https://flat.badgen.net/apm/license/console)](https://atom.io/packages/console)
 [![apm](https://flat.badgen.net/apm/v/console)](https://atom.io/packages/console)
 [![apm](https://flat.badgen.net/apm/dl/console)](https://atom.io/packages/console)
+[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-console)](https://circleci.com/gh/idleberg/atom-console)
 [![David](https://flat.badgen.net/david/dep/idleberg/atom-console)](https://david-dm.org/idleberg/atom-console)
 
 This package is a fork of `console-panel`, with a few key-differences:
