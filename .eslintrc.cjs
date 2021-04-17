@@ -20,7 +20,7 @@ module.exports = {
     "semi": [2, "always"],
     "no-prototype-builtins": "off"
   },
-  "ignorePatterns": ["node_modules/"],
+  "ignorePatterns": ["node_modules/", "lib/"],
   "overrides": [
     {
       // JSON files
