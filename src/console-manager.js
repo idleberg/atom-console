@@ -57,11 +57,10 @@ export default class ConsoleManager {
   }
 
   // Log raw text
-  raw(rawText, level = 'raw', lineEnding = '\n') {
-    console.log('Raw output', rawText);
-    // rawText.split(lineEnding).map(line => {
-      this.log(String(true), level);
-    // });
+  raw(rawText, level = 'info', lineEnding = '\n') {
+    rawText.split(lineEnding).map((line) => {
+      this.log(line, level);
+    });
   }
 
   // Clear console panel

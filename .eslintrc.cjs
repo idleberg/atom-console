@@ -21,6 +21,10 @@ module.exports = {
     "no-prototype-builtins": "off"
   },
   "ignorePatterns": ["node_modules/", "lib/"],
+  "ignorePatterns": [
+    "lib/",
+    "node_modules/"
+  ],
   "overrides": [
     {
       // JSON files

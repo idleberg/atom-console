@@ -52,17 +52,6 @@ export default class ConsoleView {
   log(message, level) {
     console.log({level, message});
 
-<<<<<<< Updated upstream
-    if (at_bottom && !this.stickTop) {
-      this.body.scrollTop(this.body[0].scrollHeight);
-    } else if (this.stickTop) {
-      this.body.scrollTop(0);
-    }
-    
-    if (atom.config.get('console-panel.show') === true) {
-      this.show();
-    }
-=======
     store.update(state => {
       state.lines = [
         ...state.lines || [],
@@ -77,7 +66,6 @@ export default class ConsoleView {
 
       return state;
     });
->>>>>>> Stashed changes
   }
 
   clear() {
