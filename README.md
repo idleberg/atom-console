@@ -66,7 +66,7 @@ This package provides the service to that can be used by other packages. To cons
 ```json
 {
   "consumedServices": {
-    "console-panel": {
+    "console": {
       "versions": {
         "1.0.0": "consumeConsole"
       }
