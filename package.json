@@ -27,7 +27,7 @@
     "console-panel": {
       "description": "Read only log console",
       "versions": {
-        "1.0.0": "provideConsolePanel"
+        "1.0.0": "provideConsole"
       }
     }
   },

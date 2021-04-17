@@ -55,7 +55,7 @@ export default {
     this.consoleView.destroy();
   },
 
-  provideConsolePanel() {
+  provideConsole() {
     return this.consoleManager;
   }
 };
