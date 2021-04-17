@@ -17,6 +17,8 @@ This package is a fork of `console-panel`, with a few key-differences:
 
 **Note:** This package is fully API-compatible to `console-panel`, so you can use it as a drop-in replacement
 
+![Screenshot](https://raw.github.com/idleberg/atom-console/master/screenshot.png)
+
 ## Installation
 
 ### apm
