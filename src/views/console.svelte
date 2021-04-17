@@ -108,7 +108,7 @@
             {#if showTimestamp}
               <div class="timestamp {mapLevel(level).text}">
                 <pre class="badge {coloredBadges}-{mapLevel(level).text} icon {mapLevel(level).icon}" on:click={scrollToTop}>
-                  <span class="text-highlight" title={timestamp.tooltip}>{timestamp.visible}</span>
+                  <span title={timestamp.tooltip}>{timestamp.visible}</span>
                 </pre>
               </div>
             {/if}
