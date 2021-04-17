@@ -69,6 +69,7 @@ export default class ConsoleView extends View {
     } else if (this.stickTop) {
       this.body.scrollTop(0);
     }
+
     if (atom.config.get('console-panel.show') === true) {
       this.show();
     }
