@@ -40,8 +40,9 @@ export default {
       })
     );
 
-    window.cp = this.consoleManager;
     if (atom.inDevMode()) {
+      window.cp = this.consoleManager;
+
       atom.commands.add('atom-workspace', {
         'console:log': () => this.consoleManager.raw({ msg: 'Hello World'})
       });
