@@ -24,6 +24,12 @@
     "core:loaded-shell-environment"
   ],
   "providedServices": {
+    "console": {
+      "description": "Read only log console",
+      "versions": {
+        "1.0.0": "provideConsole"
+      }
+    },
     "console-panel": {
       "description": "Read only log console",
       "versions": {
@@ -32,7 +38,8 @@
     }
   },
   "dependencies": {
-    "event-kit": "^2.2.0"
+    "event-kit": "^2.2.0",
+    "svelte": "^3.32.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -61,7 +68,6 @@
     "source-map-explorer": "^2.5.2",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
-    "svelte": "^3.32.3",
     "svelte-preprocess": "^4.6.9"
   },
   "prettier": {
