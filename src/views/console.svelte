@@ -106,7 +106,7 @@
         <p hidden={filters.length && !filters.includes(level)}>
           {#if typeof message === 'string'}
             {#if showTimestamp}
-              <div class="timestamp">
+              <div class="timestamp {mapLevel(level).text}">
                 <pre class="badge {coloredBadges}-{mapLevel(level).text} icon {mapLevel(level).icon}" on:click={scrollToTop}>
                   <span class="text-highlight" title={timestamp.tooltip}>{timestamp.visible}</span>
                 </pre>
@@ -151,8 +151,22 @@
     }
 
     .timestamp {
-      padding: 5px 10px;
+      border-left: 5px solid;
+      padding: 5px;
+      margin-bottom: 5px;
       user-select: none;
+
+      &.error {
+        border-color: var(--text-color-error);
+      }
+
+      &.info {
+        border-color: var(--text-color-info);
+      }
+
+      &.warning {
+        border-color: var(--text-color-warning);
+      }
     }
 
     .badge {
