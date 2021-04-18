@@ -38,6 +38,7 @@
     }
   },
   "dependencies": {
+    "@atxm/developer-console": "^0.5.0",
     "event-kit": "^2.2.0",
     "svelte": "^3.32.3"
   },

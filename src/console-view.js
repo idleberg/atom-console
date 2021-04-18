@@ -1,6 +1,7 @@
 import store from './store';
 import { getConfig, getTimestamp, hideDock, showDock } from './utils';
 import Console from './views/console.svelte';
+import Logger from './log';
 
 export default class ConsoleView {
 
@@ -50,8 +51,6 @@ export default class ConsoleView {
   }
 
   log(message, level) {
-    console.log({level, message});
-
     store.update(state => {
       state.lines = [
         ...state.lines || [],
@@ -69,7 +68,7 @@ export default class ConsoleView {
   }
 
   clear() {
-    console.log('Clearing console');
+    Logger.log('Clearing console');
 
     store.update(state => {
       state.action = 'clear';

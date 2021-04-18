@@ -70,8 +70,6 @@
       const filter = event.target.innerText.toLowerCase();
 
       store.update(state => {
-        console.log("filters before", state.filters);
-
         if (state.filters.includes(filter)) {
           const index = state.filters.indexOf(filter);
           state.filters.splice(index, 1);
@@ -80,8 +78,6 @@
         }
 
         filters = state.filters;
-
-        console.log("filters after", state.filters);
 
         return state;
       });
