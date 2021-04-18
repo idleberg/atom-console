@@ -89,10 +89,10 @@
 
 <div class='block'>
   <div class='btn-group'>
-    <button class="btn" on:click={filterHandler}>Log</button>
-    <button class="btn" on:click={filterHandler}>Info</button>
-    <button class="btn" on:click={filterHandler}>Warning</button>
-    <button class="btn" on:click={filterHandler}>Error</button>
+    <button class="btn icon icon-quote" on:click={filterHandler}>Log</button>
+    <button class="btn icon icon-info" on:click={filterHandler}>Info</button>
+    <button class="btn icon icon-issue-opened" on:click={filterHandler}>Warning</button>
+    <button class="btn icon icon-flame" on:click={filterHandler}>Error</button>
   </div>
 </div>
 
