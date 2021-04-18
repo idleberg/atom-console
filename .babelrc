@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-optional-chaining"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "electron": "2.0.0"
+        },
+        "corejs": "3",
+        "useBuiltIns": "entry"
+      }
+    ]
+  ]
+}
