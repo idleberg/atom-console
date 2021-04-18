@@ -1,14 +1,12 @@
 import store from './store';
 import { getConfig, getTimestamp, hideDock, showDock } from './utils';
 import Console from './views/console.svelte';
-import Logger from './log';
+const Logger = console;
 
 export default class ConsoleView {
 
   destroy() {
-    if (this.disposables !== null) {
-      this.disposables.dispose();
-    }
+    this.disposables?.dispose();
   }
 
   getElement() {
@@ -68,7 +66,7 @@ export default class ConsoleView {
   }
 
   clear() {
-    Logger.log('Clearing console');
+    if (atom.inDevMode()) console.log('Clearing console');
 
     store.update(state => {
       state.action = 'clear';

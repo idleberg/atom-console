@@ -7,7 +7,7 @@ export default class ConsoleManager {
   }
 
   destroy() {
-    this.emitter.dispose();
+    this.emitter?.dispose();
   }
 
   // Toggle console panel

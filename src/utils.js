@@ -58,8 +58,6 @@ function getTimestamp() {
 }
 
 function mapLevel(level) {
-  console.log('mapLevel', level);
-
   switch (level) {
     case 'debug':
       return {

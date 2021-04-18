@@ -2,7 +2,7 @@ import { CompositeDisposable } from 'atom';
 import ConsoleManager from './console-manager';
 import ConsoleView from './console-view';
 import configSchema from './config';
-import Logger from './log';
+const Logger = console;
 
 export default {
   config: configSchema,
@@ -10,7 +10,7 @@ export default {
   subscriptions: null,
 
   activate() {
-    Logger.log('Activating package');
+    if (atom.inDevMode()) console.log('Activating package');
 
     this.consoleView = new ConsoleView();
     this.consoleManager = new ConsoleManager(this.consoleView);
@@ -53,13 +53,14 @@ export default {
   },
 
   deactivate() {
-    Logger.log('Deactivating package');
-    this.subscriptions.dispose();
-    this.consoleView.destroy();
+    if (atom.inDevMode()) console.log('Deactivating package');
+
+    this.subscriptions?.dispose();
+    this.consoleView?.destroy();
   },
 
   provideConsole() {
-    Logger.log('Providing service');
+    if (atom.inDevMode()) console.log('Providing service');
 
     return this.consoleManager;
   }
