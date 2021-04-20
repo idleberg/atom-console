@@ -2,7 +2,6 @@ import { CompositeDisposable } from 'atom';
 import ConsoleManager from './console-manager';
 import ConsoleView from './console-view';
 import configSchema from './config';
-const Logger = console;
 
 export default {
   config: configSchema,

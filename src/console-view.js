@@ -1,7 +1,6 @@
 import store from './store';
 import { getConfig, getTimestamp, hideDock, showDock } from './utils';
 import Console from './views/console.svelte';
-const Logger = console;
 
 export default class ConsoleView {
 
