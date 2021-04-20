@@ -36,7 +36,7 @@ function hideDock(): void {
   }
 }
 
-function getTimestamp() {
+function getTimestamp(): TimestampObject {
   const date = new Date();
 
   const hh = `0${date.getHours()}`.slice(-2);
@@ -45,12 +45,12 @@ function getTimestamp() {
   const ms = `${date.getMilliseconds()}0`.slice(0, 3);
 
   return {
-    visible: `${hh}:${mm}:${ss}.${ms}`,
-    tooltip: date.toString()
+    tooltip: date.toString(),
+    visible: `${hh}:${mm}:${ss}.${ms}`
   };
 }
 
-function mapLevel(level) {
+function mapLevel(level: string): MapLevelObject {
   switch (level) {
     case 'debug':
       return {
