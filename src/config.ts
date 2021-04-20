@@ -1,4 +1,4 @@
-import { ConfigValues } from 'atom';
+import type { ConfigValues } from 'atom';
 import { name } from '../package.json';
 
 export default {

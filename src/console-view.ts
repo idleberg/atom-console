@@ -1,4 +1,4 @@
-import { Disposable } from 'atom';
+import type { Disposable } from 'atom';
 import { getTimestamp, hideDock, showDock } from './utils';
 import { name } from '../package.json';
 import Config from './config';
