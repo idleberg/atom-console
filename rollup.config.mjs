@@ -29,6 +29,7 @@ const plugins = [
   typescript({
     allowSyntheticDefaultImports: true,
     esModuleInterop: true,
+    extends: '@tsconfig/svelte/tsconfig.json',
     moduleResolution: 'node',
     resolveJsonModule: true
   }),
