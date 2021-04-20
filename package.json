@@ -15,6 +15,7 @@
     "build": "rollup --config",
     "dev": "npm run start",
     "lint:code": "eslint --no-error-on-unmatched-pattern ./src/**/*.js",
+    "lint:json": "jsonlint keymaps/*.json menus/*.json --quiet",
     "lint:styles": "stylelint --allow-empty-input styles/*.{css,less}",
     "lint": "npm-run-all --parallel lint:*",
     "prepublishOnly": "npm run build",
@@ -62,6 +63,7 @@
     "eslint": "^7.24.0",
     "eslint-plugin-json": "^2.1.2",
     "husky": ">=4 <5",
+    "jsonlint": "^1.6.3",
     "lint-staged": "^10.5.0",
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
@@ -98,6 +100,7 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
+    "*.json": "jsonlint --quiet",
     "*.{js,md,yml}": "prettierx --write",
     "*.less": "stylelint --cache --fix"
   }
