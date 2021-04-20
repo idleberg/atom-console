@@ -26,13 +26,7 @@ const plugins = [
     emitCss: false,
     preprocess: autoPreprocess()
   }),
-  typescript({
-    allowSyntheticDefaultImports: true,
-    esModuleInterop: true,
-    extends: '@tsconfig/svelte/tsconfig.json',
-    moduleResolution: 'node',
-    resolveJsonModule: true
-  }),
+  typescript(),
   production && terser()
 ];
 
