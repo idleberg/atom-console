@@ -1,14 +1,18 @@
-import store from './store';
-import { getConfig, getTimestamp, hideDock, showDock } from './utils';
+import { Disposable } from 'atom';
+import { getTimestamp, hideDock, showDock } from './utils';
+import { name } from '../package.json';
+import Config from './config';
 import Console from './views/console.svelte';
+import store from './store';
 
 export default class ConsoleView {
+  disposables: Disposable;
 
-  destroy() {
+  destroy(): void {
     this.disposables?.dispose();
   }
 
-  getElement() {
+  getElement(): HTMLElement {
     const element = document.createElement('console');
 
     new Console({
@@ -18,36 +22,36 @@ export default class ConsoleView {
     return element;
   }
 
-  getTitle() {
+  getTitle(): string {
     return 'Console';
   }
 
-  getPath() {
+  getPath(): string {
     return 'panel';
   }
 
-  getURI() {
-    return `atom://console/${this.getPath()}`;
+  getURI(): string {
+    return `atom://${name}/${this.getPath()}`;
   }
 
-  getDefaultLocation() {
-    return getConfig('panelLocation');
+  getDefaultLocation(): string {
+    return String(Config.get('panelLocation'));
   }
 
-  show() {
+  show(): void {
     atom.workspace.open(this, { activatePane: false });
     showDock();
   }
 
-  hide() {
+  hide(): void {
     hideDock();
   }
 
-  toggle() {
+  toggle(): void {
     atom.workspace.toggle(this);
   }
 
-  log(message, level) {
+  log(message: string, level: string): void {
     store.update(state => {
       state.lines = [
         ...state.lines || [],
@@ -64,7 +68,7 @@ export default class ConsoleView {
     });
   }
 
-  clear() {
+  clear(): void {
     if (atom.inDevMode()) console.log('Clearing console');
 
     store.update(state => {

@@ -1,14 +1,7 @@
-function getConfig(key = '') {
-  const packageName = 'console';
+import Config from './config';
 
-  return (key
-    ? atom.config.get(`${packageName}.${key}`)
-    : atom.config.get(packageName)
-  );
-}
-
-function showDock() {
-  const panelLocation = getConfig('panelLocation');
+function showDock(): void {
+  const panelLocation = String(Config.get('panelLocation'));
 
   switch (panelLocation.toLowerCase()) {
     case 'left':
@@ -25,8 +18,8 @@ function showDock() {
   }
 }
 
-function hideDock() {
-  const panelLocation = getConfig('panelLocation');
+function hideDock(): void {
+  const panelLocation = String(Config.get('panelLocation'));
 
   switch (panelLocation.toLowerCase()) {
     case 'left':
@@ -99,16 +92,16 @@ function mapLevel(level) {
   }
 }
 
-function handleOverflow() {
-  return getConfig('wordWrap')
+function handleOverflow(): string {
+  return Config.get('wordWrap')
   ? `
     overflow: hidden;
     white-space: pre-wrap;
   ` : '';
 }
 
-function initStatusBarHeight() {
-  const statusBar = document.querySelector('status-bar');
+function initStatusBarHeight(): void {
+  const statusBar: HTMLElement = document.querySelector('status-bar');
 
   if (statusBar?.offsetHeight) {
     document.documentElement.style.setProperty('--status-bar-height', `${statusBar.offsetHeight}px`);
@@ -116,7 +109,6 @@ function initStatusBarHeight() {
 }
 
 export {
-  getConfig,
   getTimestamp,
   handleOverflow,
   hideDock,

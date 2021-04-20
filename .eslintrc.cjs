@@ -9,18 +9,20 @@ module.exports = {
     "jasmine": true
   },
   "globals": { "atom": "readonly"},
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "semi": [2, "always"],
     "no-prototype-builtins": "off"
   },
-  "ignorePatterns": ["node_modules/", "lib/"],
   "ignorePatterns": [
     "lib/",
     "node_modules/"
