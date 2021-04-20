@@ -7,9 +7,7 @@
 
     let lines;
     const unsubscribe = store.subscribe(state => {
-
       switch (state.action) {
-
         case 'log':
           lines = [
             ...state.lines
@@ -22,7 +20,6 @@
 
         default:
           break;
-
         }
 
       return lines;
@@ -98,22 +95,24 @@
 
 <div class="panel-body scrollable" bind:this={div}>
     <div class="console-lines" tabindex="-1">
-      {#each lines as {level, message, timestamp}}
-        <p hidden={filters.length && !filters.includes(level)}>
-          {#if typeof message === 'string'}
-            {#if showTimestamp}
-              <div class="timestamp {mapLevel(level).text}">
-                <pre class="badge {coloredBadges}-{mapLevel(level).text} icon {mapLevel(level).icon}" on:click={scrollToTop}>
-                  <span title={timestamp.tooltip}>{timestamp.visible}</span>
-                </pre>
-              </div>
+      {#if lines?.length}
+        {#each lines as {level, message, timestamp}}
+          <p hidden={filters.length && !filters.includes(level)}>
+            {#if typeof message === 'string'}
+              {#if showTimestamp}
+                <div class="timestamp {mapLevel(level).text}">
+                  <pre class="badge {coloredBadges}-{mapLevel(level).text} icon {mapLevel(level).icon}" on:click={scrollToTop}>
+                    <span title={timestamp.tooltip}>{timestamp.visible}</span>
+                  </pre>
+                </div>
+              {/if}
+              <pre class="message" style={wordWrap && handleOverflow()}>{message}</pre>
+            {:else}
+              {message}
             {/if}
-            <pre class="message" style={wordWrap && handleOverflow()}>{message}</pre>
-          {:else}
-            {message}
-          {/if}
-        </p>
-      {/each}
+          </p>
+        {/each}
+      {/if}
     </div>
 </div>
 
