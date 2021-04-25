@@ -11,11 +11,6 @@ const production = !process.env.ROLLUP_WATCH;
 const plugins = [
   commonjs(),
   json(),
-  (
-    production
-      ? terser()
-      : undefined
-  ),
   nodeResolve({
     preferBuiltins: true
   }),
@@ -37,7 +32,7 @@ export default [
       file: 'lib/console.js',
       exports: 'default',
       format: 'cjs',
-      sourcemap: true
+      ssourcemap: production ? false : true
     },
     external: [
       // Atom
