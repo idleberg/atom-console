@@ -37,7 +37,7 @@ export default [
       file: 'lib/console.js',
       exports: 'default',
       format: 'cjs',
-      ssourcemap: production ? false : true
+      sourcemap: production ? false : true
     },
     external: [
       // Atom
