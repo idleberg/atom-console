@@ -1,3 +1,4 @@
+import { babel } from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 import commonjs from '@rollup/plugin-commonjs';
@@ -9,6 +10,10 @@ import autoPreprocess from 'svelte-preprocess';
 const production = !process.env.ROLLUP_WATCH;
 
 const plugins = [
+  babel({
+    extensions: ['.cjs', '.js', '.jsx', '.mjs', '.ts', '.tsx'],
+    babelHelpers: 'bundled',
+  }),
   commonjs(),
   json(),
   nodeResolve({
