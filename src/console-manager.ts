@@ -1,4 +1,3 @@
-import { ViewModel } from 'atom';
 import { DisposableLike, Emitter } from 'event-kit';
 
 export default class ConsoleManager {
