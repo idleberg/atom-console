@@ -3,7 +3,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "target": "ES2018"
   },
   "extends": "@tsconfig/svelte/tsconfig.json"
 }
