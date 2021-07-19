@@ -175,6 +175,7 @@
       font-size: unset;
       flex-grow: 1;
       margin-bottom: var(--status-bar-height);
+      overflow: hidden;
 
       &::selection {
         background-color: var(--background-color-selected);
