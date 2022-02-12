@@ -12,3 +12,7 @@ yarn-error.log
 .stylelintcache
 .yo-rc.json
 tsconfig.tsbuildinfo
+
+# build artifacts
+dist/
+lib/
