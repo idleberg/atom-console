@@ -1,5 +1,5 @@
 {
-  "atom-workspace": {
-    "ctrl-alt-c": "console:toggle"
-  }
+	"atom-workspace": {
+		"ctrl-alt-c": "console:toggle"
+	}
 }

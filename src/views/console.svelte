@@ -116,7 +116,7 @@
     </div>
 </div>
 
-<style type="text/scss">
+<style>
   .scrollable {
     height: 100%;
     overflow: auto;
@@ -130,57 +130,57 @@
   }
 
   .console-lines {
-    &:empty {
-      padding: 0;
-    }
-
     overflow: visible;
+  }
+
+  .console-lines:empty {
+    padding: 0;
   }
 
   p {
     display: flex;
     margin: 0;
+  }
 
-    &[hidden] {
-      display: none;
-    }
+  p[hidden] {
+    display: none;
+  }
 
-    .timestamp {
-      border-left: 5px solid;
-      padding: 5px;
-      margin-bottom: 5px;
-      user-select: none;
+  p .timestamp {
+    border-left: 5px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+    user-select: none;
+  }
 
-      &.error {
-        border-color: var(--text-color-error);
-      }
+  p .timestamp.error {
+    border-color: var(--text-color-error);
+  }
 
-      &.info {
-        border-color: var(--text-color-info);
-      }
+  p .timestamp.info {
+    border-color: var(--text-color-info);
+  }
 
-      &.warning {
-        border-color: var(--text-color-warning);
-      }
-    }
+  p .timestamp.warning {
+    border-color: var(--text-color-warning);
+  }
 
-    .badge {
-      cursor: pointer;
-      font-size: 11px;
-      position: sticky;
-      top: 5px;
-    }
+  p .badge {
+    cursor: pointer;
+    font-size: 11px;
+    position: sticky;
+    top: 5px;
+  }
 
-    .message {
-      font-size: unset;
-      flex-grow: 1;
-      margin-bottom: var(--status-bar-height);
-      overflow: hidden;
+  p .message {
+    font-size: unset;
+    flex-grow: 1;
+    margin-bottom: var(--status-bar-height);
+    overflow: hidden;
+  }
 
-      &::selection {
-        background-color: var(--background-color-selected);
-        color: var(--text-color-selected);
-      }
-    }
+  p .message::selection {
+    background-color: var(--background-color-selected);
+    color: var(--text-color-selected);
   }
 </style>

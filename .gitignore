@@ -1,17 +1,16 @@
 # Package Managers
 bower_components/
 node_modules/
-*npm-debug.log*
-yarn.lock
+npm-debug.log*
+pnpm-lock.yaml
+shrinkwrap.yaml
+vendor/
 yarn-error.log
+yarn.lock
 
-# Development
-.eslintcache
+# Development Files
 *.map
-.rollup.cache/
-.stylelintcache
-.yo-rc.json
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
-# build artifacts
-dist/
+# Project-specific
+todo.md

@@ -1,10 +1,11 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "target": "ES2018"
-  },
-  "extends": "@tsconfig/svelte/tsconfig.json"
+	"extends": "@idleberg/configs/tsc",
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"verbatimModuleSyntax": false
+	}
 }

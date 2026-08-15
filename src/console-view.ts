@@ -1,81 +1,81 @@
 import type { Disposable } from 'atom';
-import { getTimestamp, hideDock, showDock } from './utils';
 import { name } from '../package.json';
 import Config from './config';
-import Console from './views/console.svelte';
 import store from './store';
+import { getTimestamp, hideDock, showDock } from './utils';
+import Console from './views/console.svelte';
 
 export default class ConsoleView {
-  disposables: Disposable;
+	disposables: Disposable;
 
-  destroy(): void {
-    this.disposables?.dispose();
-  }
+	destroy(): void {
+		this.disposables?.dispose();
+	}
 
-  getElement(): HTMLElement {
-    const element = document.createElement('console');
+	getElement(): HTMLElement {
+		const element = document.createElement('console');
 
-    new Console({
-      target: element
-    });
+		new Console({
+			target: element,
+		});
 
-    return element;
-  }
+		return element;
+	}
 
-  getTitle(): string {
-    return 'Console';
-  }
+	getTitle(): string {
+		return 'Console';
+	}
 
-  getPath(): string {
-    return 'panel';
-  }
+	getPath(): string {
+		return 'panel';
+	}
 
-  getURI(): string {
-    return `atom://${name}/${this.getPath()}`;
-  }
+	getURI(): string {
+		return `atom://${name}/${this.getPath()}`;
+	}
 
-  getDefaultLocation(): string {
-    return String(Config.get('panelLocation'));
-  }
+	getDefaultLocation(): string {
+		return String(Config.get('panelLocation'));
+	}
 
-  show(): void {
-    atom.workspace.open(this, { activatePane: false });
-    showDock();
-  }
+	show(): void {
+		atom.workspace.open(this, { activatePane: false });
+		showDock();
+	}
 
-  hide(): void {
-    hideDock();
-  }
+	hide(): void {
+		hideDock();
+	}
 
-  toggle(): void {
-    atom.workspace.toggle(this);
-  }
+	toggle(): void {
+		atom.workspace.toggle(this);
+	}
 
-  log(message: string, level: string): void {
-    store.update(state => {
-      state.lines = [
-        ...state.lines || [],
-        {
-          level,
-          message,
-          timestamp: getTimestamp(),
-        }
-      ];
+	log(message: string, level: string): void {
+		store.update((state) => {
+			state.lines = [
+				...(state.lines || []),
+				{
+					level,
+					message,
+					timestamp: getTimestamp(),
+				},
+			];
 
-      state.action = 'log';
+			state.action = 'log';
 
-      return state;
-    });
-  }
+			return state;
+		});
+	}
 
-  clear(): void {
-    if (atom.inDevMode()) console.log('Clearing console');
+	clear(): void {
+		if (atom.inDevMode()) console.log('Clearing console');
 
-    store.update(state => {
-      state.action = 'clear';
-      state.lines = [];
+		store.update((state) => {
+			state.action = 'clear';
+			state.lines = [];
 
-      return state;
-    });
-  }
+			return state;
+		});
+	}
 }

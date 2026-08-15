@@ -1,0 +1,20 @@
+# The shared configs at https://github.com/idleberg/configs are not used as
+# remotes here: their commands shell out to `pnpm exec`, and this project is on
+# npm. The jobs below mirror them one-to-one.
+
+[pre-commit.commands.biome]
+run = """
+npx biome check \\
+  --fix \\
+  --no-errors-on-unmatched \\
+  --reporter=summary \\
+  --staged
+"""
+stage_fixed = true
+
+[commit-msg.commands.commitlint]
+run = "npx commitlint --edit $1"
+
+[pre-push.commands.e18e]
+glob = "package-lock.json"
+run = "npx e18e-cli analyze --log-level error --quiet"

@@ -1,7 +1,7 @@
-import { name } from '../package.json';
 import DeveloperConsole from '@atxm/developer-console';
+import { name } from '../package.json';
 
 export default new DeveloperConsole({
-  name: name,
-  backgroundColor: 'deepskyblue'
+	name: name,
+	backgroundColor: 'deepskyblue',
 });

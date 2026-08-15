@@ -1,9 +1,9 @@
 interface MapLevelObject {
-  icon: string;
-  text: string;
+	icon: string;
+	text: string;
 }
 
 interface TimestampObject {
-  visible: string;
-  tooltip: string;
+	visible: string;
+	tooltip: string;
 }
