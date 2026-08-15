@@ -19,6 +19,7 @@
 		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
 		"lint:biome": "biome check",
 		"lint:e18e": "e18e-cli analyze --log-level error --quiet",
+		"lint:types": "tsc --noEmit",
 		"prepublishOnly": "npm run build",
 		"start": "npm run dev",
 		"test": "npm run lint"
