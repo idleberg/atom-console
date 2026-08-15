@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@atxm/developer-console": "^0.5.0",
+    "@children-of-atom/rosetta": "^0.1.0",
     "event-kit": "^2.5.3",
     "svelte": "^3.59.2"
   },
