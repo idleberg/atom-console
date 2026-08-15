@@ -7,39 +7,42 @@ import Logger from './log';
 
 export default {
 	config: config.schema,
-	consoleView: null,
+	consoleView: null as ConsoleView | null,
+	consoleManager: null as ConsoleManager | null,
 	subscriptions: new CompositeDisposable(),
 
 	activate(): void {
 		Logger.log('Activating package');
 
-		this.consoleView = new ConsoleView();
-		this.consoleManager = new ConsoleManager(this.consoleView);
+		const consoleView = new ConsoleView();
+
+		this.consoleView = consoleView;
+		this.consoleManager = new ConsoleManager(consoleView);
 
 		this.subscriptions.add(applyStyles());
 
 		// Register command that toggles this view
 		this.subscriptions.add(
 			atom.commands.add('atom-workspace', {
-				'console:show': () => this.consoleManager.show(),
+				'console:show': () => this.consoleManager?.show(),
 			}),
 		);
 
 		this.subscriptions.add(
 			atom.commands.add('atom-workspace', {
-				'console:hide': () => this.consoleManager.hide(),
+				'console:hide': () => this.consoleManager?.hide(),
 			}),
 		);
 
 		this.subscriptions.add(
 			atom.commands.add('atom-workspace', {
-				'console:toggle': () => this.consoleManager.toggle(),
+				'console:toggle': () => this.consoleManager?.toggle(),
 			}),
 		);
 
 		this.subscriptions.add(
 			atom.commands.add('atom-workspace', {
-				'console:clear': () => this.consoleManager.clear(),
+				'console:clear': () => this.consoleManager?.clear(),
 			}),
 		);
 
@@ -47,7 +50,7 @@ export default {
 			window.cp = this.consoleManager;
 
 			atom.commands.add('atom-workspace', {
-				'console:log': () => this.consoleManager.raw({ msg: 'Hello World' }),
+				'console:log': () => this.consoleManager?.raw('Hello World'),
 			});
 		}
 	},
@@ -59,7 +62,7 @@ export default {
 		this.consoleView?.destroy();
 	},
 
-	provideConsole(): ConsoleManager {
+	provideConsole(): ConsoleManager | null {
 		Logger.log('Providing service');
 
 		return this.consoleManager;

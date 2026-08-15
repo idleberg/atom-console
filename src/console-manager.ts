@@ -1,10 +1,11 @@
 import { type DisposableLike, Emitter } from 'event-kit';
+import type ConsoleView from './console-view';
 
 export default class ConsoleManager {
 	emitter: DisposableLike;
-	view: any;
+	view: ConsoleView;
 
-	constructor(view: any) {
+	constructor(view: ConsoleView) {
 		this.view = view;
 		this.emitter = new Emitter();
 	}

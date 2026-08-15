@@ -6,7 +6,10 @@ import { getTimestamp, hideDock, showDock } from './utils';
 import Console from './views/console.svelte';
 
 export default class ConsoleView {
-	disposables: Disposable;
+	disposables?: Disposable;
+
+	// Set via ConsoleManager's `stickTop()`/`stickBottom()` service methods.
+	stickTop = false;
 
 	destroy(): void {
 		this.disposables?.dispose();

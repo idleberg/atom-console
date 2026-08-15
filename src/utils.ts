@@ -102,7 +102,7 @@ function handleOverflow(): string {
 }
 
 function initStatusBarHeight(): void {
-	const statusBar: HTMLElement = document.querySelector('status-bar');
+	const statusBar = document.querySelector<HTMLElement>('status-bar');
 
 	if (statusBar?.offsetHeight) {
 		document.documentElement.style.setProperty('--status-bar-height', `${statusBar.offsetHeight}px`);
