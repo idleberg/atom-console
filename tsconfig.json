@@ -3,9 +3,10 @@
 	"compilerOptions": {
 		"allowSyntheticDefaultImports": true,
 		"lib": ["ES2022", "DOM", "DOM.Iterable"],
-		"module": "commonjs",
-		"moduleResolution": "node",
+		"module": "preserve",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"verbatimModuleSyntax": false
-	}
+	},
+	"include": ["src/**/*", "tsdown.config.mts"]
 }
