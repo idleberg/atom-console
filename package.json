@@ -1,6 +1,6 @@
 {
 	"name": "console",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"description": "Service provider for read-only console panels",
 	"license": "MIT",
 	"type": "commonjs",
