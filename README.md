@@ -20,32 +20,32 @@ This package is a fork of `console-panel`, with a few key-differences:
 
 ## Installation
 
-### apm
+### ppm
 
-Install `console` from Atom's [Package Manager](http://flight-manual.atom.io/using-atom/sections/atom-packages/) or the command-line equivalent:
+Install `console` from Pulsar's [Package Manager](https://docs.pulsar-edit.dev/using-pulsar/packages/#command-line) or the command-line equivalent:
 
-`$ apm install console`
+`$ ppm install console`
 
 ### Using Git
 
-Change to your Atom packages directory:
+Change to your Pulsar packages directory:
 
 **Windows**
 
 ```powershell
 # Powershell
-$ cd $Env:USERPROFILE\.atom\packages
+$ cd $Env:USERPROFILE\.pulsar\packages
 ```
 
 ```cmd
 :: Command Prompt
-$ cd %USERPROFILE%\.atom\packages
+$ cd %USERPROFILE%\.pulsar\packages
 ```
 
 **Linux & macOS**
 
 ```bash
-$ cd ~/.atom/packages/
+$ cd ~/.pulsar/packages/
 ```
 
 Clone repository as `console`:
