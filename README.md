@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/github/license/idleberg/atom-console?color=blue&style=for-the-badge)](https://github.com/idleberg/atom-console/blob/master/LICENSE)
 [![Release](https://img.shields.io/github/v/release/idleberg/atom-console?style=for-the-badge)](https://github.com/idleberg/atom-console/releases)
-[![Downloads](https://img.shields.io/pulsar/dt/language-nsis?style=for-the-badge&color=slateblue)](https://web.pulsar-edit.dev/packages/language-nsis)
+[![Downloads](https://img.shields.io/pulsar/dt/console?style=for-the-badge&color=slateblue)](https://web.pulsar-edit.dev/packages/console)
 [![CI](https://img.shields.io/github/actions/workflow/status/idleberg/atom-console/default.yml?style=for-the-badge)](https://github.com/idleberg/atom-console/actions)
 
 This package is a fork of `console-panel`, with a few key-differences:
@@ -57,7 +57,7 @@ $ git clone https://github.com/idleberg/atom-console console
 Inside the cloned directory, install dependencies using your preferred Node package manager:
 
 ```bash
-$ yarn || npm install
+$ apm install || npm install
 ```
 
 ## Usage
