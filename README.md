@@ -2,11 +2,10 @@
 
 > Service provider for read-only console panels
 
-[![apm](https://flat.badgen.net/apm/license/console)](https://atom.io/packages/console)
-[![apm](https://flat.badgen.net/apm/v/console)](https://atom.io/packages/console)
-[![apm](https://flat.badgen.net/apm/dl/console)](https://atom.io/packages/console)
-[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-console)](https://circleci.com/gh/idleberg/atom-console)
-[![David](https://flat.badgen.net/david/dep/idleberg/atom-console)](https://david-dm.org/idleberg/atom-console)
+[![License](https://img.shields.io/github/license/idleberg/atom-console?color=blue&style=for-the-badge)](https://github.com/idleberg/atom-console/blob/master/LICENSE)
+[![Release](https://img.shields.io/github/v/release/idleberg/atom-console?style=for-the-badge)](https://github.com/idleberg/atom-console/releases)
+[![Downloads](https://img.shields.io/pulsar/dt/language-nsis?style=for-the-badge&color=slateblue)](https://web.pulsar-edit.dev/packages/language-nsis)
+[![CI](https://img.shields.io/github/actions/workflow/status/idleberg/atom-console/default.yml?style=for-the-badge)](https://github.com/idleberg/atom-console/actions)
 
 This package is a fork of `console-panel`, with a few key-differences:
 
